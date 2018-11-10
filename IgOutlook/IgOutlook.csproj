@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook</AssemblyName>
+    <ApplicationIcon>Images/IgLogo.ico</ApplicationIcon>
+    <RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <Platforms>AnyCPU;x86</Platforms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml" />
+    <Page Include="Views\MainWindow.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\GUY01.jpg" />
+    <Resource Include="Images\IgLogoGray.ico" />
+    <Resource Include="Images\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Infragistics.WPF.Themes.RoyalDark" Version="18.2.137" />
+    <PackageReference Include="Prism.Unity" Version="7.2.0.639-ci" />
+    <PackageReference Include="Infragistics.WPF" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.OutlookBar" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Themes.Office2013" Version="18.2.137" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
+    <ProjectReference Include="..\IgOutlook.Core\IgOutlook.Core.csproj" />
+    <ProjectReference Include="..\IgOutlook.Modules.Calendar\IgOutlook.Modules.Calendar.csproj" />
+    <ProjectReference Include="..\IgOutlook.Modules.Contacts\IgOutlook.Modules.Contacts.csproj" />
+    <ProjectReference Include="..\IgOutlook.Modules.Mail\IgOutlook.Modules.Mail.csproj" />
+    <ProjectReference Include="..\IgOutlook.Services\IgOutlook.Services.csproj" />
+  </ItemGroup>
+
+  <Target Name="__GetPublishItems" DependsOnTargets="ComputeFilesToPublish" Returns="@(_PublishItem)">
+    <ItemGroup>
+      <_PublishItem Include="@(ResolvedFileToPublish->'%(FullPath)')" TargetPath="%(ResolvedFileToPublish.RelativePath)" OutputGroup="__GetPublishItems" />
+      <_PublishItem Include="$(ProjectDepsFilePath)" TargetPath="$(ProjectDepsFileName)" />
+      <_PublishItem Include="$(ProjectRuntimeConfigFilePath)" TargetPath="$(ProjectRuntimeConfigFileName)" />
+    </ItemGroup>
+  </Target>
+
+</Project>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '15.0'">
+    <VisualStudioVersion>15.0</VisualStudioVersion>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x86">
+      <Configuration>Debug</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x86">
+      <Configuration>Release</Configuration>
+      <Platform>x86</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|AnyCPU">
+      <Configuration>Debug</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|AnyCPU">
+      <Configuration>Release</Configuration>
+      <Platform>AnyCPU</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup>
+    <WapProjPath Condition="'$(WapProjPath)'==''">$(MSBuildExtensionsPath)\Microsoft\DesktopBridge\</WapProjPath>
+  </PropertyGroup>
+  <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.props" />
+  <PropertyGroup>
+    <ProjectGuid>5329aec0-cbaa-4654-b741-c1b2ef77ddda</ProjectGuid>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.15063.0</TargetPlatformMinVersion>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <PackageCertificateKeyFile>IgOutlook.Packaging_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <EntryPointProjectUniqueName>..\IgOutlook\IgOutlook.csproj</EntryPointProjectUniqueName>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="IgOutlook.Packaging_TemporaryKey.pfx" />
+  </ItemGroup>
+  <Import Project="$(WapProjPath)\Microsoft.DesktopBridge.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook\IgOutlook.csproj" SkipGetTargetFrameworkProperties="true" Properties="RuntimeIdentifier=win-x86;SelfContained=true" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\AppIcon.altform-unplated_targetsize-16.png" />
+    <Content Include="Images\AppIcon.altform-unplated_targetsize-24.png" />
+    <Content Include="Images\AppIcon.altform-unplated_targetsize-256.png" />
+    <Content Include="Images\AppIcon.altform-unplated_targetsize-32.png" />
+    <Content Include="Images\AppIcon.altform-unplated_targetsize-48.png" />
+    <Content Include="Images\AppIcon.scale-100.png" />
+    <Content Include="Images\AppIcon.scale-125.png" />
+    <Content Include="Images\AppIcon.scale-150.png" />
+    <Content Include="Images\AppIcon.scale-200.png" />
+    <Content Include="Images\AppIcon.scale-400.png" />
+    <Content Include="Images\AppIcon.targetsize-16.png" />
+    <Content Include="Images\AppIcon.targetsize-24.png" />
+    <Content Include="Images\AppIcon.targetsize-256.png" />
+    <Content Include="Images\AppIcon.targetsize-32.png" />
+    <Content Include="Images\AppIcon.targetsize-48.png" />
+    <Content Include="Images\MediumTile.scale-100.png" />
+    <Content Include="Images\MediumTile.scale-125.png" />
+    <Content Include="Images\MediumTile.scale-150.png" />
+    <Content Include="Images\MediumTile.scale-200.png" />
+    <Content Include="Images\MediumTile.scale-400.png" />
+    <Content Include="Images\PackageLogo.scale-100.png" />
+    <Content Include="Images\PackageLogo.scale-125.png" />
+    <Content Include="Images\PackageLogo.scale-150.png" />
+    <Content Include="Images\PackageLogo.scale-200.png" />
+    <Content Include="Images\PackageLogo.scale-400.png" />
+  </ItemGroup>
+  <PropertyGroup>
+    <PackageOutputGroups>@(PackageOutputGroups);__GetPublishItems</PackageOutputGroups>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
+    <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
+    <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <AppxBundle>Never</AppxBundle>
+  </PropertyGroup>
+  <Target Name="_ValidateAppReferenceItems" />
+  <Target Name="_FixEntryPoint" AfterTargets="_ConvertItems">
+    <PropertyGroup>
+      <EntryPointExe>IgOutlook\IgOutlook.exe</EntryPointExe>
+    </PropertyGroup>
+  </Target>
+  <Target Name="PublishReferences" BeforeTargets="ExpandProjectReferences">
+    <MSBuild Projects="@(ProjectReference->'%(FullPath)')" BuildInParallel="$(BuildInParallel)" Targets="Publish" />
+  </Target>
+</Project>

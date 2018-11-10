@@ -1,0 +1,19 @@
+﻿<igWpf:RibbonTabItem x:Class="IgOutlook.Modules.Contacts.TabItems.HomeTab"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+                     xmlns:resources="clr-namespace:IgOutlook.Modules.Contacts.Resources"
+                     Header="{x:Static resources:ResourceStrings.HomeTab_Header_Home}">
+    <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.HomeTab_RibbonGroupCaption_New}">
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.HomeTab_RibbonGroupNew_ButtonTool_NewContact}" 
+                          Command="{Binding ContactCommand}" CommandParameter="New" 
+                          LargeImage="/IgOutlook.Modules.Contacts;component/Images/Contact32.png" 
+                          SmallImage="/IgOutlook.Modules.Contacts;component/Images/Contact16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+    <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.HomeTab_RibbonGroupCaption_Delete}">
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.HomeTab_RibbonGroupDelete_ButtonTool_Delete}"
+                          Command="{Binding DeleteCommand}" 
+                          LargeImage="/IgOutlook.Modules.Contacts;component/Images/Delete32.png" 
+                          SmallImage="/IgOutlook.Modules.Contacts;component/Images/Delete16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+</igWpf:RibbonTabItem>

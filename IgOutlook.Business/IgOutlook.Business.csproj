@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook.Business</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Core" Version="7.2.0.639-ci" />
+  </ItemGroup>
+
+</Project>

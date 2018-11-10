@@ -1,0 +1,40 @@
+﻿<igWpf:XamRibbonWindow x:Class="IgOutlook.Core.Dialogs.DialogShell"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://www.codeplex.com/prism"
+             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+                       xmlns:resources="clr-namespace:IgOutlook.Core.Resources"
+                       Height="600" Width="800" WindowStartupLocation="CenterScreen">
+    <igWpf:RibbonWindowContentHost>
+        <igWpf:RibbonWindowContentHost.Ribbon>
+            <igWpf:XamRibbon Name="xamRibbon1" prism:RegionManager.RegionName="RibbonTabRegion" ApplicationMenuMode="Office2010" Theme="Office2013">
+                <igWpf:XamRibbon.ApplicationMenu2010>
+                    <igWpf:ApplicationMenu2010 Caption="{x:Static resources:ResourceStrings.ApplicationMenu_Caption_FILE}">
+
+                        <igWpf:ApplicationMenu2010Item x:Name="btnInfo" Header="{x:Static resources:ResourceStrings.ApplicationMenuItem_Header_Info}">
+                            <Grid Margin="30,0,0,0">
+                                <TextBlock FontSize="23" Text="{x:Static resources:ResourceStrings.ApplicationMenuItem_Header_Info}"/>
+                            </Grid>
+                        </igWpf:ApplicationMenu2010Item>
+
+                        <igWpf:ApplicationMenu2010Separator/>
+
+                        <igWpf:ApplicationMenu2010Item
+                            x:Name="btnClose"
+                            Header="{x:Static resources:ResourceStrings.ApplicationMenuItem_Header_Close}"
+                            Click="btnClose_Click" />
+
+                    </igWpf:ApplicationMenu2010>
+                </igWpf:XamRibbon.ApplicationMenu2010>
+                <igWpf:XamRibbon.QuickAccessToolbar>
+                    <igWpf:QuickAccessToolbar />
+                </igWpf:XamRibbon.QuickAccessToolbar>
+            </igWpf:XamRibbon>
+        </igWpf:RibbonWindowContentHost.Ribbon>
+
+        <DockPanel LastChildFill="True">
+            <ContentControl x:Name="_contentRegion"  prism:RegionManager.RegionName="ContentRegion"/>
+        </DockPanel>
+
+    </igWpf:RibbonWindowContentHost>
+</igWpf:XamRibbonWindow>

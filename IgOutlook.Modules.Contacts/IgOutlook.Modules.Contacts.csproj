@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook.Modules.Contacts</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.639-ci" />
+    <PackageReference Include="Infragistics.WPF" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataGrids" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataTree" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Editors" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.OutlookBar" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf" Version="18.2.137" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
+    <ProjectReference Include="..\IgOutlook.Core\IgOutlook.Core.csproj" />
+    <ProjectReference Include="..\IgOutlook.Services\IgOutlook.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="OutlookGroups\ContactsGroup.xaml" />
+    <Page Include="Views\ContactDetailsView.xaml" />
+    <Page Include="Views\ContactsView.xaml" />
+    <Page Include="TabItems\HomeTab.xaml" />
+    <Page Include="TabItems\ContactHomeTab.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images/*.png" />
+    <Resource Include="Images/*.jpg" />
+  </ItemGroup>
+  
+</Project>

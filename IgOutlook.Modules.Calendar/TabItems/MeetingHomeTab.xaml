@@ -1,0 +1,48 @@
+﻿<igWpf:RibbonTabItem x:Class="IgOutlook.Modules.Calendar.TabItems.MeetingHomeTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:resources="clr-namespace:IgOutlook.Modules.Calendar.Resources"
+             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+                     xmlns:converters="clr-namespace:IgOutlook.Modules.Calendar.Converters"
+                     xmlns:coreConverters="clr-namespace:IgOutlook.Core.Converters;assembly=IgOutlook.Core"
+             Header="{x:Static resources:ResourceStrings.RibbonTabItem_Header_Meeting}">
+    
+    <igWpf:RibbonTabItem.Resources>
+        <converters:ReminderTimeConverter x:Key="ReminderTimeConverter"/>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <coreConverters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+    </igWpf:RibbonTabItem.Resources>
+
+     <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupCaption_Actions}">
+    <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupActions_ButtonTool_CancelMeeting}"
+                          Command="{Binding CancelMeetingCommand}"
+                          Visibility="{Binding IsNewActivity, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/CancelMeeting32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/CancelMeeting32.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupActions_ButtonTool_Delete}"
+                          Command="{Binding DeleteAndCloseCommand}"
+                          Visibility="{Binding IsNewActivity, Converter={StaticResource BooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/Delete32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/Delete16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+
+
+    <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupCaption_Options}">
+        <igWpf:ComboEditorTool NullText="None" Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupOptions_ButtonTool_Reminder}"
+                          ItemsSource="{Binding ReminderItemsSource}" DisplayMemberPath="Description" SelectedItem="{Binding ReminderInterval}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/ReminderGallery32.png" Width="200" VerticalAlignment="Top"
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/ReminderGallery16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupOptions_ButtonTool_Recurrence}"
+                          Command="{Binding ShowRecurrenceDialogCommand}"
+                          Visibility="{Binding Activity.IsOccurrence, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/Recurrence32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/Recurrence16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <igWpf:ToggleButtonTool Caption="{x:Static resources:ResourceStrings.MeetingHomeTab_RibbonGroupOptions_ButtonTool_TimeZones}"
+                          Command="{Binding ToggleTimeZoneChoosersVisibilityCommand}"
+                          Visibility="{Binding Activity.IsOccurrence, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/ShowTimeZones32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/ShowTimeZones16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+    
+</igWpf:RibbonTabItem>

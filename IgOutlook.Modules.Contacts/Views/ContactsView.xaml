@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="IgOutlook.Modules.Contacts.Views.ContactsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:coreControls="clr-namespace:IgOutlook.Core.Controls;assembly=IgOutlook.Core"
+             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+             xmlns:resources="clr-namespace:IgOutlook.Modules.Contacts.Resources">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <igWpf:XamMaskedEditor Grid.Column="2" HorizontalAlignment="Stretch" Margin="0,10,20,5" NullText="{x:Static resources:ResourceStrings.SearchContacts_Text}"  Name="searchBox" PromptChar="" />
+        </Grid>
+        <igWpf:XamDataCards HorizontalAlignment="Stretch" Theme="Office2013" 
+            coreControls:XamDataPresenterBase.FilterValue="{Binding ElementName=searchBox, Path=Text}" 
+            coreControls:XamDataPresenterBase.FilterByFields="FileAs,Company"
+            coreControls:XamDataPresenterBase.DoubleClickCommand="{Binding ContactCommand}"
+            coreControls:XamDataPresenterBase.DoubleClickCommandParameter="View"
+            ActiveDataItem="{Binding ActiveContact}" 
+            Grid.Row="1" Grid.Column="1" Name="xamDataCards" DataSource="{Binding Contacts}" Margin="10">
+            <igWpf:XamDataCards.ViewSettings>
+                <igWpf:CardViewSettings HeaderPath="FileAs" CollapseCardButtonVisibility="Collapsed" CardWidth="270"
+                                        InterCardSpacingX="10" InterCardSpacingY="10" AllowCardHeightResizing="False" AllowCardWidthResizing="False"/>
+            </igWpf:XamDataCards.ViewSettings>
+            <igWpf:XamDataCards.FieldLayoutSettings>
+                <igWpf:FieldLayoutSettings LabelLocation="Hidden" AutoGenerateFields="False"  SelectionTypeCell="None" SelectionTypeRecord="None"
+                                           AutoArrangeCells="Never" HighlightPrimaryField="SameAsOtherFields" DataRecordSizingMode="Fixed"/>
+            </igWpf:XamDataCards.FieldLayoutSettings>
+            <igWpf:XamDataCards.FieldSettings>
+                <igWpf:FieldSettings AllowEdit="False" CellClickAction="SelectRecord" AllowResize="False" />
+            </igWpf:XamDataCards.FieldSettings>
+            <igWpf:XamDataCards.Resources>
+                <Style TargetType="{x:Type igWpf:CellValuePresenter}">
+                    <Style.Setters>
+                        <Setter Property="Padding" Value="0,-4,0,-4"/>
+                    </Style.Setters>
+                </Style>
+                <Style TargetType="{x:Type igWpf:CellValuePresenter}" x:Key="cvpImageStyle">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type igWpf:CellValuePresenter}">
+                                <Grid Width="70" Height="70" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5,5,2,0">
+                                    <Image  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            VerticalAlignment="Top" 
+                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </igWpf:XamDataCards.Resources>
+            <igWpf:XamDataCards.FieldLayouts>
+                <igWpf:FieldLayout>
+                    <igWpf:FieldLayout.SortedFields>
+                    </igWpf:FieldLayout.SortedFields>
+                    <igWpf:Field Name="PhotoUri" RowSpan="6" Column="0">
+                        <igWpf:Field.Settings>
+                            <igWpf:FieldSettings CellMaxWidth="70" CellWidth="70" Width="70" CellValuePresenterStyle="{StaticResource cvpImageStyle}" />
+                        </igWpf:Field.Settings>
+                    </igWpf:Field>
+                    <igWpf:Field Name="FileAs" Column="1" Row="0" IsScrollTipField="True">
+                        <igWpf:Field.Settings>
+                            <igWpf:FieldSettings >
+                                <igWpf:FieldSettings.CellValuePresenterStyle>
+                                    <Style TargetType="{x:Type igWpf:CellValuePresenter}">
+                                        <Style.Setters>
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                            <Setter Property="FontSize" Value="14"/>
+                                        </Style.Setters>
+                                    </Style>
+                                </igWpf:FieldSettings.CellValuePresenterStyle>
+                            </igWpf:FieldSettings>
+                        </igWpf:Field.Settings>
+                    </igWpf:Field>
+                    <igWpf:Field Name="Company" Column="1" Row="1" Height="16"/>
+                    <igWpf:Field Name="JobTitle" Column="1" Row="2" Height="16"/>
+                    <igWpf:Field Name="Department" Column="1" Row="3" Height="16"/>
+                    <igWpf:Field Name="PhoneHome" Column="1" Row="4" Height="16"/>
+                    <igWpf:Field Name="Email" Column="1" Row="5" Height="42"/>
+                </igWpf:FieldLayout>
+            </igWpf:XamDataCards.FieldLayouts>
+        </igWpf:XamDataCards>
+        <ItemsControl ItemsSource="{Binding AlphabeticalSearchItems}" Grid.Column="0" Grid.Row="1">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,2">
+                        <MenuItem Command="{Binding Path=DataContext.ActivateContactCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type ItemsControl}}}"
+                                  CommandParameter="{Binding}">
+                            <MenuItem.Header>
+                                <TextBlock HorizontalAlignment="Center" Margin="-70,0,-30,0"  Text="{Binding}"/>
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

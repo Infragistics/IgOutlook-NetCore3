@@ -1,0 +1,31 @@
+﻿<igOutlookBar:OutlookBarGroup x:Class="IgOutlook.Modules.Mail.OutlookGroups.MailGroup"
+                              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                              xmlns:igOutlookBar="http://infragistics.com/OutlookBar"
+                              xmlns:igWpf="http://schemas.infragistics.com/xaml"
+                              xmlns:prism="http://prismlibrary.com/"
+                              xmlns:coreConverters="clr-namespace:IgOutlook.Core.Converters;assembly=IgOutlook.Core"
+                              xmlns:coreBehaviors="clr-namespace:IgOutlook.Core.Behaviors;assembly=IgOutlook.Core"
+                              prism:ViewModelLocator.AutoWireViewModel="True"
+                              xmlns:resources="clr-namespace:IgOutlook.Modules.Mail.Resources"
+                              Header="{x:Static resources:ResourceStrings.OutlookBarGroup_Header_Mail}"
+                              LargeImage="/IgOutlook.Modules.Mail;component/Images/Mail32.png" 
+                              SmallImage="/IgOutlook.Modules.Mail;component/Images/Mail16.png" >
+
+    <igOutlookBar:OutlookBarGroup.Resources>
+        <coreConverters:XamDataTreeActiveNodeChangedConverter x:Key="ActiveNodeChangedConverter" />
+    </igOutlookBar:OutlookBarGroup.Resources>
+    <Grid>
+        <igWpf:XamDataTree x:Name="_xamDataTree" Background="Transparent" ItemsSource="{Binding Items}" ActiveNodeChanging="ActiveNodeChanging">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="ActiveNodeChanged">
+                    <coreBehaviors:EventToCommand Command="{Binding ApplicationCommands.NavigateCommand}" EventArgsConverter="{StaticResource ActiveNodeChangedConverter}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <igWpf:XamDataTree.GlobalNodeLayouts>
+                <igWpf:NodeLayout Key="ItemsLayout" TargetTypeName="NavigationItem" DisplayMemberPath="Caption" IsExpandedMemberPath="IsExpanded"/>
+            </igWpf:XamDataTree.GlobalNodeLayouts>
+        </igWpf:XamDataTree>
+    </Grid>
+</igOutlookBar:OutlookBarGroup>

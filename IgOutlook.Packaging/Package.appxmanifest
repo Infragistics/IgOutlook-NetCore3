@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp rescap">
+  <Identity Name="a4d0ca50-4ffd-446f-b197-9ce6440e7edb" Publisher="CN=BLagunas" Version="1.0.2.0" />
+  <Properties>
+    <DisplayName>IgOutlook</DisplayName>
+    <PublisherDisplayName>BLagunas</PublisherDisplayName>
+    <Logo>images\PackageLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+    <TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
+      <uap:VisualElements DisplayName="IgOutlook" Description="The IG Outlook showcase application provides guidance on how to build a Microsoft Outlook inspired application using Microsoft’s Patterns &amp; Practices Prism library. This showcase demonstrates the use of common design patterns and principals such as MVVM (Model-View-ViewModel), IoC (Inversion of Control), DI (dependency injection), event aggregation, commanding, navigation, and modular application development techniques in combination with Infragistics controls." BackgroundColor="transparent" Square150x150Logo="images\MediumTile.png" Square44x44Logo="images\AppIcon.png">
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <rescap:Capability Name="runFullTrust" />
+  </Capabilities>
+</Package>

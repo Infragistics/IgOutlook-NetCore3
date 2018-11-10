@@ -1,0 +1,49 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook.Modules.Calendar</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.639-ci" />
+    <PackageReference Include="Infragistics.WPF" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Calendar" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Controls.Editors.XamComboEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataGrids" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Controls.Editors.XamDateTimeInput" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataTree" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Editors" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.OutlookBar" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Schedules" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Schedules.Dialogs" Version="18.2.137" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
+    <ProjectReference Include="..\IgOutlook.Core\IgOutlook.Core.csproj" />
+    <ProjectReference Include="..\IgOutlook.Services\IgOutlook.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="OutlookGroups\CalendarGroup.xaml" />
+    <Page Include="Views\AppointmentView.xaml" />
+    <Page Include="Views\CalendarView.xaml" />
+    <Page Include="Views\MeetingView.xaml" />
+    <Page Include="TabItems\HomeTab.xaml" />
+    <Page Include="TabItems\AppointmentHomeTab.xaml" />
+    <Page Include="TabItems\FormatTextTab.xaml" />
+    <Page Include="TabItems\MeetingHomeTab.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images/*.png" />
+  </ItemGroup>
+
+</Project>

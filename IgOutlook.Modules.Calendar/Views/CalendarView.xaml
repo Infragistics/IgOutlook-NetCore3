@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="IgOutlook.Modules.Calendar.Views.CalendarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ig="http://schemas.infragistics.com/xaml"
+             xmlns:converters="clr-namespace:IgOutlook.Modules.Calendar.Converters"
+             xmlns:coreBehaviors="clr-namespace:IgOutlook.Core.Behaviors;assembly=IgOutlook.Core"
+             xmlns:prism="http://prismlibrary.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True" >
+    
+    <!--<UserControl.Resources>
+        <converters:XamOutlookCalendarViewSelectedTimeRangeChangedConverter x:Key="SelectedTimeRangeChangedConverter" />
+    </UserControl.Resources>-->
+    
+    <Grid x:Name="_placeHolder">
+        <!--<ig:XamOutlookCalendarView Name="ocv" CurrentViewMode="{Binding CurrentViewMode, Mode=TwoWay}" DateNavigator="{Binding DateNavigator}"
+                                   DataManager="{Binding DataManager}" ActiveCalendar="{Binding ActiveCalendar, Mode=OneWayToSource}" >
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedTimeRangeChanged">
+                    <coreBehaviors:EventToCommand Command="{Binding SelectedTimeRangeChangedCommand}" EventArgsConverter="{StaticResource SelectedTimeRangeChangedConverter}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ig:XamOutlookCalendarView>-->
+    </Grid>
+</UserControl>

@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook.Core</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.639-ci" />
+    <PackageReference Include="Infragistics.WPF" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataGrids" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataTree" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Schedules" Version="18.2.137" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Dialogs\DialogShell.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\*.ico" />
+  </ItemGroup>
+
+</Project>

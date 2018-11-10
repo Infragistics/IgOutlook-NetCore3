@@ -1,0 +1,44 @@
+﻿<igWpf:RibbonTabItem x:Class="IgOutlook.Modules.Calendar.TabItems.AppointmentHomeTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
+             xmlns:converters="clr-namespace:IgOutlook.Modules.Calendar.Converters"  
+                     xmlns:coreConverters="clr-namespace:IgOutlook.Core.Converters;assembly=IgOutlook.Core"
+             xmlns:resources="clr-namespace:IgOutlook.Modules.Calendar.Resources"
+             Header="{x:Static resources:ResourceStrings.RibbonTabItem_Header_Appointment}" >
+    
+    <igWpf:RibbonTabItem.Resources>
+        <converters:ReminderTimeConverter x:Key="ReminderTimeConverter"/>
+        <coreConverters:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+    </igWpf:RibbonTabItem.Resources>
+
+    <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupCaption_Actions}">
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupActions_ButtonTool_SaveAndClose}" 
+                          Command="{Binding SaveAndCloseCommand}" 
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/SaveAndClose32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/SaveAndClose16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupActions_ButtonTool_Delete}"
+                          Command="{Binding DeleteAndCloseCommand}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/Delete32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/Delete16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+
+
+    <igWpf:RibbonGroup Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupCaption_Options}">
+        <igWpf:ComboEditorTool NullText="{x:Static resources:ResourceStrings.None_Text}" Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupOptions_ButtonTool_Reminder}"
+                          ItemsSource="{Binding ReminderItemsSource}" DisplayMemberPath="Description" SelectedItem="{Binding ReminderInterval}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/ReminderGallery32.png" Width="200" VerticalAlignment="Top"
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/ReminderGallery16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <igWpf:ButtonTool Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupOptions_ButtonTool_Recurrence}"
+                          Command="{Binding ShowRecurrenceDialogCommand}"
+                          Visibility="{Binding Activity.IsOccurrence, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/Recurrence32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/Recurrence16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+        <igWpf:ToggleButtonTool Caption="{x:Static resources:ResourceStrings.AppointmentHomeTab_RibbonGroupOptions_ButtonTool_TimeZones}"
+                          Command="{Binding ToggleTimeZoneChoosersVisibilityCommand}"
+                          Visibility="{Binding Activity.IsOccurrence, Converter={StaticResource InvertedBooleanToVisibilityConverter}}"
+                          LargeImage="/IgOutlook.Modules.Calendar;component/Images/ShowTimeZones32.png" 
+                          SmallImage="/IgOutlook.Modules.Calendar;component/Images/ShowTimeZones16.png" igWpf:RibbonGroup.MaximumSize="ImageAndTextLarge"/>
+    </igWpf:RibbonGroup>
+    
+</igWpf:RibbonTabItem>

@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>IgOutlook.Modules.Mail</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.DesktopUI" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Prism.Wpf" Version="7.2.0.639-ci" />
+    <PackageReference Include="Infragistics.WPF" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Controls.Editors.XamComboEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataGrids" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.DataTree" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Editors" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.OutlookBar" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf" Version="18.2.137" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
+    <ProjectReference Include="..\IgOutlook.Core\IgOutlook.Core.csproj" />
+    <ProjectReference Include="..\IgOutlook.Services\IgOutlook.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="OutlookGroups\MailGroup.xaml" />
+    <Page Include="Views\MessageListView.xaml" />
+    <Page Include="Views\MessageView.xaml" />
+    <Page Include="Views\MessageReadOnlyView.xaml" />
+    <Page Include="TabItems\HomeTab.xaml" />
+    <Page Include="TabItems\MessageHomeTab.xaml" />
+    <Page Include="TabItems\MessageReadOnlyHomeTab.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images/*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Converters\" />
+  </ItemGroup>
+
+
+</Project>
