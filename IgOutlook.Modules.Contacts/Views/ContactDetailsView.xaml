@@ -160,11 +160,9 @@
             <TextBlock Grid.Column="0" Grid.Row="1" Padding="10,5" Foreground="{StaticResource BlueTextBrush}"
                        FontSize="14"  Text="{x:Static resources:ResourceStrings.Notes_Text}"/>
 
-            <Grid x:Name="_rtePlaceholder" Grid.Row="2">
-                <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-                <!--<ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding ActiveContact.Notes}" />
-            <ig:XamRichTextEditor Grid.Row="2" Margin="5" Name="_rte" IsReadOnly="True" AllowDocumentViewSplitting="False" CaretColor="{x:Null}"/>-->
-            </Grid>
+            <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding ActiveContact.Notes}" />
+            <ig:XamRichTextEditor Grid.Row="2" Margin="5" Name="_rte" IsReadOnly="True" AllowDocumentViewSplitting="False" CaretColor="{x:Null}"/>
+
         </Grid>
     </Grid>
 </UserControl>

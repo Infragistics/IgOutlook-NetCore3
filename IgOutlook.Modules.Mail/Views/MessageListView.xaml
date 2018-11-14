@@ -27,7 +27,7 @@
         <converters:MailDateGroupByComparer x:Key="MailDateGroupByComparer" />
         <converters:MailReadUnreadConverter x:Key="MailReadUnreadConverter" />
     </UserControl.Resources>
-    
+
     <Grid x:Name="LayoutRoot" Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="370" />
@@ -120,7 +120,7 @@
                     </ToggleButton.Template>
                 </ToggleButton>
             </Grid>
-            
+
             <igWpf:XamDataGrid Grid.Row="1" Margin="0,0,10,0" DataSource="{Binding Messages}" ActiveDataItem="{Binding Message, Mode=TwoWay}" RecordSelectorExtent="0" GroupByAreaLocation="None" Theme="Office2013"
                                coreControls:XamDataPresenterBase.GroupByFieldName="{Binding ActiveFieldSortOption.FieldName}" 
                                coreControls:XamDataPresenterBase.SortDirection="{Binding ActiveFieldSortOption.ActiveSortDirection}"
@@ -359,16 +359,12 @@
                     <Rectangle Grid.Row="6" Grid.ColumnSpan="2" Stroke="#FFD4D4D4"  StrokeThickness="0.4" Height="1" VerticalAlignment="Center" Fill="Transparent" igPrim:XamlHelper.SnapsToDevicePixels="True"/>
                 </Grid>
 
-                <Grid x:Name="_rtePlaceholder" Grid.Row="1">
-                    <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-                    <!--<ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
-                    <ig:XamRichTextEditor x:Name="_rte" Grid.Row="1" AllowDocumentViewSplitting="False" BorderThickness="0" Margin="10" CaretColor="{x:Null}" IsReadOnly="True">
+                <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
+                <ig:XamRichTextEditor x:Name="_rte" Grid.Row="1" AllowDocumentViewSplitting="False" BorderThickness="0" Margin="10" CaretColor="{x:Null}" IsReadOnly="True">
                     <ig:XamRichTextEditor.ClipboardSerializationProviders>
-                        <igWpf:RtfSerializationProvider/>
+                        <ig:RtfSerializationProvider/>
                     </ig:XamRichTextEditor.ClipboardSerializationProviders>
-                </ig:XamRichTextEditor>-->
-                </Grid>
-
+                </ig:XamRichTextEditor>
 
                 <Rectangle Grid.Row="1" Stroke="{StaticResource LineBrush}"  StrokeThickness="0.4" Height="1" VerticalAlignment="Bottom" Fill="Transparent" igPrim:XamlHelper.SnapsToDevicePixels="True" Margin="10,0,0,3"/>
 

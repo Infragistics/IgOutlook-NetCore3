@@ -6,7 +6,7 @@
              xmlns:resources="clr-namespace:IgOutlook.Modules.Calendar.Resources"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    
+
     <UserControl.Resources>
         <converters:ActivityUtcToLocalTimeConverter x:Key="ActivityUtcToLocalTimeConverter"/>
         <converters:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
@@ -53,8 +53,8 @@
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding Activity.Location, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" Margin="2,4" Grid.ColumnSpan="10"/>
 
         <!--Start\End Date-->
-        <!--<ig:XamDateTimeInput Grid.Row="3" Grid.Column="1" Value="{Binding Activity.Start, Converter={StaticResource ActivityUtcToLocalTimeConverter}}" Margin="2,4"  DropDownButtonStyle="{StaticResource DropDownButtonStyle}" DropDownButtonDisplayMode="Always"/>
-        <ig:XamDateTimeInput Grid.Row="4" Grid.Column="1" Value="{Binding Activity.End, Converter={StaticResource ActivityUtcToLocalTimeConverter}}" Margin="2,4"  DropDownButtonStyle="{StaticResource DropDownButtonStyle}" DropDownButtonDisplayMode="Always"/>-->
+        <ig:XamDateTimeInput Grid.Row="3" Grid.Column="1" Value="{Binding Activity.Start, Converter={StaticResource ActivityUtcToLocalTimeConverter}}" Margin="2,4"  DropDownButtonStyle="{StaticResource DropDownButtonStyle}" DropDownButtonDisplayMode="Always"/>
+        <ig:XamDateTimeInput Grid.Row="4" Grid.Column="1" Value="{Binding Activity.End, Converter={StaticResource ActivityUtcToLocalTimeConverter}}" Margin="2,4"  DropDownButtonStyle="{StaticResource DropDownButtonStyle}" DropDownButtonDisplayMode="Always"/>
 
         <!--Start\End TimeIntervals-->
         <ComboBox Grid.Row="3" Grid.Column="2" ItemStringFormat="{}{0:HH:mm tt}" ItemsSource="{Binding StartTimeIntervals}" IsEnabled="{Binding ElementName=cbAllDayEvent, Path=IsChecked, Converter={StaticResource InverseBooleanConverter}}" 
@@ -71,15 +71,12 @@
         <!--All day event-->
         <CheckBox Grid.Row="4" Grid.Column="4" IsChecked="{Binding Activity.IsTimeZoneNeutral}" Content="{x:Static resources:ResourceStrings.ActivityDialog_AllDayEvent_Text}" Name="cbAllDayEvent" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="{StaticResource LightTextBrush}"/>
 
-        <Grid x:Name="_rtePlaceholder" Grid.Row="5" Grid.ColumnSpan="10" Grid.RowSpan="10">
-             <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-            <!--<ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_richTextEditor}" Value="{Binding Activity.Description}" Grid.Row="1" RefreshTrigger="ContentChanged"/>
+        <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_richTextEditor}" Value="{Binding Activity.Description}" Grid.Row="1" RefreshTrigger="ContentChanged"/>
         <ig:XamRichTextEditor x:Name="_richTextEditor" AllowDocumentViewSplitting="False" Grid.Row="5" Grid.ColumnSpan="10" Grid.RowSpan="10">
             <ig:XamRichTextEditor.ClipboardSerializationProviders>
                 <ig:RtfSerializationProvider/>
             </ig:XamRichTextEditor.ClipboardSerializationProviders>
-        </ig:XamRichTextEditor>-->
-        </Grid>
+        </ig:XamRichTextEditor>
     </Grid>
 
 </UserControl>

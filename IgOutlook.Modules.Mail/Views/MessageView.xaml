@@ -5,10 +5,10 @@
              prism:ViewModelLocator.AutoWireViewModel="True"
              xmlns:resources="clr-namespace:IgOutlook.Modules.Mail.Resources"
              xmlns:ig="http://schemas.infragistics.com/xaml"
-             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
              xmlns:igPrim="http://schemas.infragistics.com/xaml/primitives"
+             xmlns:igWpf="http://schemas.infragistics.com/xaml/wpf"
              xmlns:coreConverters="clr-namespace:IgOutlook.Core.Converters;assembly=IgOutlook.Core"
-             >
+             xmlns:coreControls="clr-namespace:IgOutlook.Core.Controls;assembly=IgOutlook.Core">
 
     <UserControl.Resources>
 
@@ -52,24 +52,20 @@
             <TextBlock Grid.Row="3" Grid.Column="1" Text="{x:Static resources:ResourceStrings.Message_Subject_Text}" Margin="2" VerticalAlignment="Center" Foreground="{StaticResource LightTextBrush}"/>
 
             <!--To\Cc\Subject-->
-            <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-            <!--<ig:XamComboEditor Grid.Row="1" Grid.Column="2" Margin="2" VerticalAlignment="Center" AllowMultipleSelection="True" MultiSelectValueDelimiter=";" AutoComplete="True" DisplayMemberPath="Email" SelectedValuePath="Email" 
+            <ig:XamComboEditor Grid.Row="1" Grid.Column="2" Margin="2" VerticalAlignment="Center" AllowMultipleSelection="True" MultiSelectValueDelimiter=";" AutoComplete="True" DisplayMemberPath="Email" SelectedValuePath="Email" 
                                ItemsSource="{Binding Contacts}" SelectedValues="{Binding Message.To, Mode=TwoWay, Converter={StaticResource observableCollectionToArrayConverter}}"/>
             <ig:XamComboEditor Grid.Row="2" Grid.Column="2" Margin="2" VerticalAlignment="Center" AllowMultipleSelection="True" MultiSelectValueDelimiter=";" AutoComplete="True" DisplayMemberPath="Email" SelectedValuePath="Email" 
-                               ItemsSource="{Binding Contacts}" SelectedValues="{Binding Message.Cc, Mode=TwoWay, Converter={StaticResource observableCollectionToArrayConverter}}"/>-->
+                               ItemsSource="{Binding Contacts}" SelectedValues="{Binding Message.Cc, Mode=TwoWay, Converter={StaticResource observableCollectionToArrayConverter}}"/>
             <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding Message.Subject, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Stretch" Margin="2,4"/>
         </Grid>
 
-        <Grid x:Name="_rtePlaceholder" Grid.Row="1">
-            <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-            <!--<ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_richTextEditor}" Value="{Binding Message.Body}" />
+        <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_richTextEditor}" Value="{Binding Message.Body}" />
         <ig:XamRichTextEditor x:Name="_richTextEditor" AllowDocumentViewSplitting="False" Grid.Row="1" Margin="5,0,5,10"
-                              infPrism:XamRichTextEditorBehavior.InsertRtfContent="{Binding InsertedRtf}">
+                              coreControls:XamRichTextEditorBehavior.InsertRtfContent="{Binding InsertedRtf}">
             <ig:XamRichTextEditor.ClipboardSerializationProviders>
                 <ig:RtfSerializationProvider/>
             </ig:XamRichTextEditor.ClipboardSerializationProviders>
-        </ig:XamRichTextEditor>-->
-        </Grid>
+        </ig:XamRichTextEditor>
 
         <Rectangle Grid.Row="1" Stroke="{StaticResource LineBrush}"  StrokeThickness="0.4" Height="1" VerticalAlignment="Bottom" Fill="Transparent" igPrim:XamlHelper.SnapsToDevicePixels="True" Margin="0,0,5,3"/>
 

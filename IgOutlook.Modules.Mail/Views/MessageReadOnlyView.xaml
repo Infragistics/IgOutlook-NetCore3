@@ -5,6 +5,7 @@
              xmlns:resources="clr-namespace:IgOutlook.Modules.Mail.Resources"
              xmlns:infConverters="clr-namespace:IgOutlook.Core.Converters;assembly=IgOutlook.Core"
              xmlns:converters="clr-namespace:IgOutlook.Modules.Mail.Converters"
+             xmlns:ig="http://schemas.infragistics.com/xaml"
              xmlns:prism="http://prismlibrary.com/"
              prism:ViewModelLocator.AutoWireViewModel="True">
 
@@ -68,17 +69,12 @@
             </Border>
         </Grid>
 
-        <Grid x:Name="_rtePlaceholder" Grid.Row="1">
-            <!-- TODO: Uncomment this when .NET Core 3 can build it without error -->
-            <!--<ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
+        <ig:RtfDocumentAdapter Document="{Binding Document, ElementName=_rte}" Value="{Binding Message.Body}" />
         <ig:XamRichTextEditor x:Name="_rte" Grid.Row="1" Margin="10"  IsReadOnly="True" BorderThickness="0" AllowDocumentViewSplitting="False">
             <ig:XamRichTextEditor.ClipboardSerializationProviders>
                 <ig:RtfSerializationProvider/>
             </ig:XamRichTextEditor.ClipboardSerializationProviders>
-        </ig:XamRichTextEditor>-->
-        </Grid>
-        
-
+        </ig:XamRichTextEditor>
 
         <Rectangle Grid.Row="1" Stroke="{StaticResource LineBrush}"  StrokeThickness="0.4" Height="1" VerticalAlignment="Bottom" Fill="Transparent" igPrim:XamlHelper.SnapsToDevicePixels="True" Margin="0,0,5,3"/>
 

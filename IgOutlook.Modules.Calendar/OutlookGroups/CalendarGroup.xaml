@@ -19,6 +19,7 @@
     <igOutlookBar:OutlookBarGroup.Resources>
         <coreConverters:XamDataTreeActiveNodeChangedConverter x:Key="ActiveNodeChangedConverter" />
         <conveters:XamDataTreeSelectedNodesCollectionChangedConverter x:Key="SelectedNodesCollectionChangedConverter" />
+        <conveters:XamDateNavigatorSelectedDatesConverter x:Key="SelectedDatesConverter" />
     </igOutlookBar:OutlookBarGroup.Resources>
 
     <Grid>
@@ -26,13 +27,16 @@
             <RowDefinition Height="200"/>
             <RowDefinition Height="*" MinHeight="100"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="_dateNavigatorPlaceholder">
-            <!-- TODO: Fix when Core 3 can compile XAML properly -->
-            <!--<ig:XamDateNavigator Grid.Row="0" Margin="5" HighlightDayCriteria="DaysWithActivity" Background="Transparent" DataManager="{Binding DataManager}"
-                             convertToEventToCommand:XamDateNavigatorSelectedDates.Command="{Binding DateNavigatorSelectedDatesCommand}" 
-                             coreControls:XamDateNavigatorProperties.SelectedDates="{Binding SelectedDates}"/>-->
-        </Grid>
-        
+
+        <ig:XamDateNavigator x:Name="_dateNavigator" Grid.Row="0" Margin="5" HighlightDayCriteria="DaysWithActivity" Background="Transparent" DataManager="{Binding DataManager}"
+                             coreControls:XamDateNavigatorProperties.SelectedDates="{Binding SelectedDates}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedDatesChanged">
+                    <coreBehaviors:EventToCommand Command="{Binding DateNavigatorSelectedDatesCommand}" EventArgsConverter="{StaticResource SelectedDatesConverter}" EventArgsConverterParameter="{Binding ElementName=_dateNavigator}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ig:XamDateNavigator>
+
         <GridSplitter Grid.Row="0" ResizeDirection="Rows" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
             <GridSplitter.Template>
                 <ControlTemplate>

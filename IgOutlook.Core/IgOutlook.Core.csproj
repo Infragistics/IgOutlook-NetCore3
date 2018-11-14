@@ -15,6 +15,7 @@
     <PackageReference Include="Infragistics.WPF.DataTree" Version="18.2.137" />
     <PackageReference Include="Infragistics.WPF.Ribbon" Version="18.2.137" />
     <PackageReference Include="Infragistics.WPF.RichTextEditor" Version="18.2.137" />
+    <PackageReference Include="Infragistics.WPF.RichTextDocument.Rtf" Version="18.2.137" />
     <PackageReference Include="Infragistics.WPF.Schedules" Version="18.2.137" />
   </ItemGroup>
 

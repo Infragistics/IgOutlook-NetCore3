@@ -26,37 +26,6 @@ namespace IgOutlook.Modules.Calendar.OutlookGroups
         public CalendarGroup()
         {
             InitializeComponent();
-
-            //workaround for XAML build error in Core 3
-            XamDateNavigator dateNav = new XamDateNavigator();
-            dateNav.Margin = new Thickness(5);
-            dateNav.HighlightDayCriteria = HighlightDayCriteria.DaysWithActivity;
-            dateNav.Background = new SolidColorBrush(Colors.Transparent);
-
-            Binding dataManagerBinding = new Binding();
-            dataManagerBinding.Source = DataContext;
-            dataManagerBinding.Path = new PropertyPath("DataManager");
-            dateNav.SetBinding(XamDateNavigator.DataManagerProperty, dataManagerBinding);
-
-            Binding selectedDatesBinding = new Binding();
-            selectedDatesBinding.Source = DataContext;
-            selectedDatesBinding.Path = new PropertyPath("SelectedDates");
-            dateNav.SetBinding(XamDateNavigatorProperties.SelectedDatesProperty, selectedDatesBinding);
-
-            Binding commandBinding = new Binding();
-            commandBinding.Source = DataContext;
-            commandBinding.Path = new PropertyPath("DateNavigatorSelectedDatesCommand");
-
-            EventToCommand eventToCommand = new EventToCommand();
-            eventToCommand.EventArgsConverter = new DateNavigatorSelectedDatesConverter();
-            BindingOperations.SetBinding(eventToCommand, EventToCommand.CommandProperty, commandBinding);
-
-            var triggers = Interaction.GetTriggers(dateNav);
-            var eventTrigger = new System.Windows.Interactivity.EventTrigger() { EventName = "SelectedDatesChanged" };
-            eventTrigger.Actions.Add(eventToCommand);
-            triggers.Add(eventTrigger);
-
-            _dateNavigatorPlaceholder.Children.Add(dateNav);
         }
 
         private void ActiveNodeChanging(object sender, ActiveNodeChangingEventArgs e)
