@@ -1,12 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Wpf">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>IgOutlook.Modules.Contacts</AssemblyName>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.DesktopUI" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="7.2.0.639-ci" />
@@ -23,14 +20,6 @@
     <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
     <ProjectReference Include="..\IgOutlook.Core\IgOutlook.Core.csproj" />
     <ProjectReference Include="..\IgOutlook.Services\IgOutlook.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Page Include="OutlookGroups\ContactsGroup.xaml" />
-    <Page Include="Views\ContactDetailsView.xaml" />
-    <Page Include="Views\ContactsView.xaml" />
-    <Page Include="TabItems\HomeTab.xaml" />
-    <Page Include="TabItems\ContactHomeTab.xaml" />
   </ItemGroup>
 
   <ItemGroup>

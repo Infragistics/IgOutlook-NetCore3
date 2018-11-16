@@ -1,12 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk.Wpf">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>IgOutlook.Services</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.DesktopUI" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IgOutlook.Business\IgOutlook.Business.csproj" />
