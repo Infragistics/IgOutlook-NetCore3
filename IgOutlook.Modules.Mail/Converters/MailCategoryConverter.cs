@@ -1,5 +1,4 @@
 ﻿using IgOutlook.Business.Calendar;
-using IgOutlook.Business.Mail;
 using System;
 using System.Windows.Data;
 using System.Windows.Media;

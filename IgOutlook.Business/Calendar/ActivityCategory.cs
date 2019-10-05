@@ -15,6 +15,7 @@ namespace IgOutlook.Business.Calendar
             get { return _color; }
             set { SetProperty(ref _color, value); }
         }
+
         public object DataItem
         {
             get { return _dataItem; }

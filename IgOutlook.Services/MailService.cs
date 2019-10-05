@@ -177,7 +177,7 @@ namespace IgOutlook.Services
                 Flags = MailFlags.Seen, 
                 Category = new ActivityCategory()
                 {
-                    Color = System.Windows.Media.Colors.Red,
+                    //Color = System.Windows.Media.Colors.Red,
                     Description = ResourceStrings.RedCatDesc,
                     CategoryName = ResourceStrings.RedCatName
                 }
@@ -198,7 +198,7 @@ namespace IgOutlook.Services
                 Flags = MailFlags.Seen, 
                 Category = new ActivityCategory()
                 {
-                    Color = System.Windows.Media.Colors.Red,
+                    //Color = System.Windows.Media.Colors.Red,
                     Description = ResourceStrings.RedCatDesc,
                     CategoryName = ResourceStrings.RedCatName
                 }
