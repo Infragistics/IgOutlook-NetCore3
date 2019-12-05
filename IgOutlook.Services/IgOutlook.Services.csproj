@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <AssemblyName>IgOutlook.Services</AssemblyName>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
